@@ -7,6 +7,7 @@ import {
   SidebarMenuItem,
 } from '../ui/sidebar'
 import { LayoutDashboard, Settings, UserRound, type LucideIcon } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 interface Link {
   path: string
@@ -16,17 +17,17 @@ interface Link {
 
 const SIDEBAR_LINKS: Link[] = [
   {
-    path: 'contacts',
+    path: '/contacts',
     label: 'Contacts',
     icon: UserRound,
   },
   {
-    path: 'dashboard',
+    path: '/dashboard',
     label: 'Dashboard',
     icon: LayoutDashboard,
   },
   {
-    path: 'settings',
+    path: '/settings',
     label: 'Settings',
     icon: Settings,
   },
@@ -38,13 +39,22 @@ export default function SidebarNav() {
       <SidebarGroupContent>
         <SidebarMenu>
           {SIDEBAR_LINKS.map((link) => (
-            <SidebarMenuItem>
+            <SidebarMenuItem key={link.path}>
               <SidebarMenuButton size='lg' asChild>
                 <NavLink to={link.path}>
-                  <div className='flex aspect-square size-8 items-center justify-center rounded-md border border-stone-800'>
-                    <link.icon className='size-4' />
-                  </div>
-                  <span>{link.label}</span>
+                  {({ isActive }) => (
+                    <>
+                      <div
+                        className={cn(
+                          isActive ? 'border-blue-600 text-blue-600' : 'border-stone-800',
+                          'flex aspect-square size-8 items-center justify-center rounded-md border '
+                        )}
+                      >
+                        <link.icon className='size-4' />
+                      </div>
+                      <span>{link.label}</span>
+                    </>
+                  )}
                 </NavLink>
               </SidebarMenuButton>
             </SidebarMenuItem>

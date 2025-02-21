@@ -1,3 +1,3 @@
 export default function ContactsTable() {
-  return <div>Table</div>
+  return <div className='mt-4'>Table</div>
 }

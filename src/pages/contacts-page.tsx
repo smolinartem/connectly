@@ -1,31 +1,29 @@
 import { useState } from 'react'
+import { cn } from '@/lib/utils'
 import ContactsForm from '@/components/contacts/contacts-form'
 import ContactsTable from '@/components/contacts/contacts-table'
-import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
+import { Plus, TableProperties } from 'lucide-react'
 
 export default function ContactsPage() {
   const [action, setAction] = useState<'form' | 'table'>('table')
   return (
     <section>
-      <div className='flex border border-blue-600 rounded-md max-w-[400px] p-1.5'>
-        <button
-          className={cn(
-            action === 'form' ? 'border border-blue-600' : '',
-            'rounded-md p-2 w-full cursor-pointer text-amber-500'
-          )}
+      <div className='flex gap-4'>
+        <Button
+          className={cn(action === 'form' && 'border-stone-800', 'cursor-pointer')}
           onClick={() => setAction('form')}
+          variant='outline'
         >
-          Contact Form
-        </button>
-        <button
-          className={cn(
-            action === 'table' ? 'border border-blue-600' : '',
-            'rounded-md p-2 w-full cursor-pointer'
-          )}
+          <Plus /> Add New Contact
+        </Button>
+        <Button
+          className={cn(action === 'table' && 'border-stone-800', 'cursor-pointer')}
           onClick={() => setAction('table')}
+          variant='outline'
         >
-          Contacts Table
-        </button>
+          <TableProperties /> Contacts Table
+        </Button>
       </div>
       {action === 'form' && <ContactsForm />}
       {action === 'table' && <ContactsTable />}

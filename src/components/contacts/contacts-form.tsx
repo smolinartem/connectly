@@ -13,10 +13,10 @@ import {
 
 export default function ContactsForm() {
   return (
-    <div className='mt-6'>
+    <div className='mt-4'>
       <form
         autoComplete='off'
-        className='flex flex-col gap-3 border border-blue-600 p-6 rounded-md max-w-[400px]'
+        className='flex flex-col gap-3 border border-stone-800 p-6 rounded-md max-w-[400px]'
       >
         <fieldset className='flex flex-col'>
           <Label className='mb-1' htmlFor='name'>
