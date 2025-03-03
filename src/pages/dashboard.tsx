@@ -1,9 +1,9 @@
 import useContactStore from '@/store/contactStore'
 
-import DashboardYearCart from '@/components/shared/dashboard-year-chart'
-import DashboardStatusChart from '@/components/shared/dashboard-status-chart'
-import DashboardResourceChart from '@/components/shared/dashboard-resource-chart'
-import DashboardUserChart from '@/components/shared/dashboard-user-chart'
+import DashboardYearCart from '@/components/dashboards/dashboard-year-chart'
+import DashboardStatusChart from '@/components/dashboards/dashboard-status-chart'
+import DashboardResourceChart from '@/components/dashboards/dashboard-resource-chart'
+import DashboardUserChart from '@/components/dashboards/dashboard-user-chart'
 
 export default function Dashboard() {
   const { contacts } = useContactStore()

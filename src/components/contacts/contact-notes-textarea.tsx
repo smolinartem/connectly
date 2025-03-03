@@ -4,7 +4,7 @@ import { Textarea } from '../ui/textarea'
 import { ContactType } from '@/types/index.types'
 import useContactStore from '@/store/contactStore'
 
-export default function NotesTextArea({ contact }: { contact: ContactType }) {
+export default function ContactNotesTextArea({ contact }: { contact: ContactType }) {
   const [newNote, setNewNote] = useState('')
   const { updateContact } = useContactStore()
 

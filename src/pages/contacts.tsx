@@ -4,11 +4,11 @@ import useFilteredContacts from '@/hooks/useFilteredContacts'
 import useContactStore from '@/store/contactStore'
 
 import AddContactDialog from '@/components/dialogs/add-contact-dialog'
-import SearchInput from '@/components/shared/search-input'
-import StatusSelect from '@/components/shared/status-select'
-import DateOrderSelect from '@/components/shared/date-order-select'
-import ContactsTable from '@/components/shared/contacts-table'
-import Pagination from '@/components/shared/pagination'
+import SearchInput from '@/components/controls/search-input'
+import StatusSelect from '@/components/controls/status-select'
+import DateOrderSelect from '@/components/controls/date-order-select'
+import ContactsTable from '@/components/contacts/contacts-table'
+import Pagination from '@/components/controls/pagination'
 import { Button } from '@/components/ui/button'
 
 export default function Contacts() {

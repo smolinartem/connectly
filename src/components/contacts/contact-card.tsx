@@ -3,9 +3,9 @@ import { ContactType } from '@/types/index.types'
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 import { Button } from '../ui/button'
 import { Pencil } from 'lucide-react'
-import DeleteAlertDialog from './delete-alert-dialog'
 import { SOURCES_NAMES } from '@/shared/constants'
 import EditContactDialog from '../dialogs/edit-contact-dialog'
+import DeleteAlertDialog from '../dialogs/delete-alert-dialog'
 
 interface Props {
   contact: ContactType

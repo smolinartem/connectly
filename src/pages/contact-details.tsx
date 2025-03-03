@@ -1,13 +1,15 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import useContactStore from '@/store/contactStore'
 
-import BackToTableButton from '@/components/shared/back-to-table-button'
-import ContactCard from '@/components/shared/contact-card'
-import ContactNotes from '@/components/shared/contact-notes'
-import NotesTextArea from '@/components/shared/notes-textarea'
+import ContactNotes from '@/components/contacts/contact-notes'
+import ContactCard from '@/components/contacts/contact-card'
+import ContactNotesTextArea from '@/components/contacts/contact-notes-textarea'
+import { Button } from '@/components/ui/button'
+import { ArrowLeft } from 'lucide-react'
 
 export default function ContactDetails() {
   const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
 
   const { contacts } = useContactStore()
   const contact = contacts.find((c) => c.id === id)
@@ -19,9 +21,12 @@ export default function ContactDetails() {
   return (
     <section className='flex gap-6 p-6'>
       <div className='max-w-[550px] w-full'>
-        <BackToTableButton />
+        <Button onClick={() => navigate('/contacts')} className='mb-4' variant='outline'>
+          <ArrowLeft />
+          Back to table
+        </Button>
         <ContactCard contact={contact} />
-        <NotesTextArea contact={contact} />
+        <ContactNotesTextArea contact={contact} />
       </div>
       <ContactNotes contact={contact} />
     </section>
