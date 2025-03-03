@@ -100,6 +100,17 @@ export const INPUTS: InputItem[] = [
   },
 ]
 
+export const TABLE_HEAD_ROWS = [
+  'Name',
+  'Email',
+  'Phone',
+  'Company',
+  'CreatedAt',
+  'UpdatedAt',
+  'Lead resource',
+  'Status',
+]
+
 export const contacts: ContactType[] = [
   {
     id: 'V1StGXR8',

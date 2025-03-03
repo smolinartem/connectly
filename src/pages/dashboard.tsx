@@ -3,7 +3,6 @@ import useContactStore from '@/store/contactStore'
 import DashboardYearCart from '@/components/dashboards/dashboard-year-chart'
 import DashboardStatusChart from '@/components/dashboards/dashboard-status-chart'
 import DashboardResourceChart from '@/components/dashboards/dashboard-resource-chart'
-import DashboardUserChart from '@/components/dashboards/dashboard-user-chart'
 
 export default function Dashboard() {
   const { contacts } = useContactStore()
@@ -15,7 +14,6 @@ export default function Dashboard() {
         <DashboardStatusChart contacts={contacts} />
         <DashboardResourceChart contacts={contacts} />
       </div>
-      <DashboardUserChart contacts={contacts} />
     </section>
   )
 }

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { ContactType } from '@/types/index.types'
-import { SOURCES_NAMES } from '@/shared/constants'
+import { SOURCES_NAMES, TABLE_HEAD_ROWS } from '@/shared/constants'
 
 import {
   Table,
@@ -27,14 +27,9 @@ function ContactsTable({ contacts }: Props) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>Phone</TableHead>
-            <TableHead>Company</TableHead>
-            <TableHead>CreatedAt</TableHead>
-            <TableHead>UpdatedAt</TableHead>
-            <TableHead>Lead resource</TableHead>
-            <TableHead>Status</TableHead>
+            {TABLE_HEAD_ROWS.map((row) => (
+              <TableHead key={row}>{row}</TableHead>
+            ))}
           </TableRow>
         </TableHeader>
         <TableBody>

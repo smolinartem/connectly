@@ -12,6 +12,25 @@ interface Props {
   onSelect: (value: string) => void
 }
 
+const STATUS_ITEMS = [
+  {
+    name: 'All statuses',
+    value: 'all',
+  },
+  {
+    name: 'Active',
+    value: 'active',
+  },
+  {
+    name: 'Potential',
+    value: 'potential',
+  },
+  {
+    name: 'Closed',
+    value: 'closed',
+  },
+]
+
 export default function StatusSelect({ selectedStatus, onSelect }: Props) {
   return (
     <Select onValueChange={(value) => onSelect(value)} value={selectedStatus}>
@@ -20,10 +39,11 @@ export default function StatusSelect({ selectedStatus, onSelect }: Props) {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectItem value='all'>All statuses</SelectItem>
-          <SelectItem value='active'>Active</SelectItem>
-          <SelectItem value='potential'>Potential</SelectItem>
-          <SelectItem value='closed'>Closed</SelectItem>
+          {STATUS_ITEMS.map((item) => (
+            <SelectItem key={item.value} value={item.value}>
+              {item.name}
+            </SelectItem>
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>
