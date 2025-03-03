@@ -1,4 +1,4 @@
-import ContatcForm from '../shared/contact-form'
+import AddContactForm from '../forms/add-contact-form'
 import DialogWrapper from './dialog-wrapper'
 
 interface Props {
@@ -13,7 +13,7 @@ export default function AddContactDialog({ open, onClose }: Props) {
       open={open}
       onClose={onClose}
     >
-      <ContatcForm />
+      <AddContactForm />
     </DialogWrapper>
   )
 }

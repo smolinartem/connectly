@@ -10,7 +10,7 @@ import FormSelectField from './form-select-field'
 import useContactStore from '@/store/contactStore'
 import { INPUTS, LEAD_SOURCES, STATUS_SELECT } from '@/shared/constants'
 
-export default function ContatcForm() {
+export default function AddContactForm() {
   const { addContact } = useContactStore()
 
   const {
