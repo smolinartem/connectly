@@ -1,0 +1,34 @@
+import { useState } from 'react'
+
+interface UsePaginationProps<T> {
+  items: T[]
+  itemsPerPage: number
+}
+
+interface UsePaginationReturn<T> {
+  currentItems: T[]
+  currentPage: number
+  totalPages: number
+  setCurrentPage: (page: number) => void
+}
+
+function usePagination<T>({ items, itemsPerPage }: UsePaginationProps<T>): UsePaginationReturn<T> {
+  const [currentPage, setCurrentPage] = useState(1)
+
+  // Вычисляем индексы для текущей страницы
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem)
+
+  // Вычисляем общее количество страниц
+  const totalPages = Math.ceil(items.length / itemsPerPage)
+
+  return {
+    currentItems,
+    currentPage,
+    totalPages,
+    setCurrentPage,
+  }
+}
+
+export default usePagination
