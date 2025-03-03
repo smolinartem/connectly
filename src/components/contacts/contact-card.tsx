@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { ContactType } from '@/types/index.types'
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
-import { Button } from '../ui/button'
-import { Pencil } from 'lucide-react'
 import { SOURCES_NAMES } from '@/shared/constants'
-import EditContactDialog from '../dialogs/edit-contact-dialog'
-import DeleteAlertDialog from '../dialogs/delete-alert-dialog'
+import { Pencil } from 'lucide-react'
+
+import EditContactDialog from '@/components/dialogs/edit-contact-dialog'
+import DeleteAlertDialog from '@/components/dialogs/delete-alert-dialog'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 
 interface Props {
   contact: ContactType

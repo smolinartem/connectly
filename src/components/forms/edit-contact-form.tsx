@@ -1,11 +1,12 @@
-import { ContactType } from '@/types/index.types'
 import { useForm } from 'react-hook-form'
+import { ContactType } from '@/types/index.types'
 import { ContactFormValues, contactSchema } from '@/lib/contactSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { Button } from '../ui/button'
 import useContactStore from '@/store/contactStore'
 import { INPUTS, LEAD_SOURCES, STATUS_SELECT } from '@/shared/constants'
+
+import { Button } from '@/components/ui/button'
 import FormInputField from '../forms/form-input-field'
 import FormSelectField from '../forms/form-select-field'
 

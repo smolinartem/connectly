@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { Button } from '../ui/button'
-import { Textarea } from '../ui/textarea'
 import { ContactType } from '@/types/index.types'
 import useContactStore from '@/store/contactStore'
+
+import { Textarea } from '@/components/ui/textarea'
+import { Button } from '@/components/ui/button'
 
 export default function ContactNotesTextArea({ contact }: { contact: ContactType }) {
   const [newNote, setNewNote] = useState('')

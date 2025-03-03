@@ -1,4 +1,4 @@
-import AddContactForm from '../forms/add-contact-form'
+import AddContactForm from '@/components/forms/add-contact-form'
 import DialogWrapper from './dialog-wrapper'
 
 interface Props {

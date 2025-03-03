@@ -1,4 +1,4 @@
-import { ScrollArea } from '../ui/scroll-area'
+import { ScrollArea } from '@/components/ui/scroll-area'
 import { ContactType } from '@/types/index.types'
 
 export default function ContactNotes({ contact }: { contact: ContactType }) {

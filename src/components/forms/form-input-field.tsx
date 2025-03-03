@@ -1,7 +1,8 @@
 import { Controller } from 'react-hook-form'
-import { Label } from '../ui/label'
-import { Input } from '../ui/input'
 import { FormInputType } from '@/types/form.types'
+
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
 
 export default function FormInputField({
   className,

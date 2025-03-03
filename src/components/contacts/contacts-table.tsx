@@ -1,7 +1,15 @@
-import { ContactType } from '@/types/index.types'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table'
 import { useNavigate } from 'react-router-dom'
+import { ContactType } from '@/types/index.types'
 import { SOURCES_NAMES } from '@/shared/constants'
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 
 interface Props {
   contacts: ContactType[]

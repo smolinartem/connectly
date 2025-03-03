@@ -1,7 +1,7 @@
 import { ContactType } from '@/types/index.types'
 
 import DialogWrapper from './dialog-wrapper'
-import EditContactForm from '../forms/edit-contact-form'
+import EditContactForm from '@/components/forms/edit-contact-form'
 
 interface Props {
   contact: ContactType

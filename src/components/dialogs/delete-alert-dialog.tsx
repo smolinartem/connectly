@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router-dom'
+import useContactStore from '@/store/contactStore'
 import { Trash2 } from 'lucide-react'
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -9,10 +12,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '../ui/alert-dialog'
-import { Button } from '../ui/button'
-import useContactStore from '@/store/contactStore'
-import { useNavigate } from 'react-router-dom'
+} from '@/components/ui/alert-dialog'
+import { Button } from '@/components/ui/button'
 
 export default function DeleteAlertDialog({ id }: { id: string }) {
   const navigate = useNavigate()

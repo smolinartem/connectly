@@ -1,5 +1,5 @@
 import { ContactType } from '@/types/index.types'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   ChartConfig,
   ChartContainer,
@@ -15,12 +15,6 @@ interface Props {
   classname?: string
   contacts: ContactType[]
 }
-
-/* const chartData = [
-  { name: '2023', value: 11, fill: 'var(--color-2023)' },
-  { name: '2024', value: 12, fill: 'var(--color-2024)' },
-  { name: '2025', value: 12, fill: 'var(--color-2025)' },
-] */
 
 const chartConfig = {
   contacts: {

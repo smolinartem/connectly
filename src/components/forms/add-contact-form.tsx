@@ -1,14 +1,14 @@
-import { nanoid } from 'nanoid'
 import { useForm } from 'react-hook-form'
+import { nanoid } from 'nanoid'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { contactSchema, type ContactFormValues } from '@/lib/contactSchema'
 
-import { Button } from '../ui/button'
-import FormInputField from './form-input-field'
-import FormSelectField from './form-select-field'
-
 import useContactStore from '@/store/contactStore'
 import { INPUTS, LEAD_SOURCES, STATUS_SELECT } from '@/shared/constants'
+
+import { Button } from '@/components/ui/button'
+import FormInputField from './form-input-field'
+import FormSelectField from './form-select-field'
 
 export default function AddContactForm() {
   const { addContact } = useContactStore()
