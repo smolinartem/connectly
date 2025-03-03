@@ -9,8 +9,11 @@ import useFilteredContacts from '@/hooks/useFilteredContacts'
 
 import DateOrderSelect from './date-order-select'
 import useContactStore from '@/store/contactStore'
+import { useState } from 'react'
+import AddContactDialog from '../dialogs/add-contact-dialog'
 
 function ContactsMain() {
+  const [isAddContactDialog, setIsAddContactDialog] = useState(false)
   const { contacts } = useContactStore()
 
   const {
@@ -31,7 +34,13 @@ function ContactsMain() {
 
   return (
     <>
+      {isAddContactDialog && (
+        <AddContactDialog open={isAddContactDialog} onClose={() => setIsAddContactDialog(false)} />
+      )}
       <div className='w-full flex gap-5'>
+        <Button onClick={() => setIsAddContactDialog(true)} variant='outline'>
+          Add New Contact
+        </Button>
         <SearchInput searchQuery={searchQuery} onSearch={handleSearch} />
         <StatusSelect selectedStatus={selectedStatus} onSelect={handleSelect} />
         <DateOrderSelect selectedOrder={sortOrder} onSelect={handleDateSort} />

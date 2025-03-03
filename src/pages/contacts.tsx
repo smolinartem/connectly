@@ -1,19 +1,54 @@
-import ContactsMain from '@/components/shared/contacts-main'
-import ContactsActionTabs from '@/components/shared/contacts-action-tabs'
+import { useState } from 'react'
+import usePagination from '@/hooks/usePagination'
+import useFilteredContacts from '@/hooks/useFilteredContacts'
+import useContactStore from '@/store/contactStore'
 
-import useTabStore from '@/store/tabStore'
-import ContactForm from '@/components/shared/contact-form'
+import AddContactDialog from '@/components/dialogs/add-contact-dialog'
+import SearchInput from '@/components/shared/search-input'
+import StatusSelect from '@/components/shared/status-select'
+import DateOrderSelect from '@/components/shared/date-order-select'
+import ContactsTable from '@/components/shared/contacts-table'
+import Pagination from '@/components/shared/pagination'
+import { Button } from '@/components/ui/button'
 
 export default function Contacts() {
-  const { activeTab } = useTabStore()
+  const [isAddContactDialog, setIsAddContactDialog] = useState(false)
+  const { contacts } = useContactStore()
+
+  const {
+    filteredContacts,
+    searchQuery,
+    selectedStatus,
+    sortOrder,
+    handleSearch,
+    handleSelect,
+    handleDateSort,
+    resetFilters,
+  } = useFilteredContacts({ contacts })
+
+  const { currentItems, currentPage, totalPages, setCurrentPage } = usePagination({
+    items: filteredContacts,
+    itemsPerPage: 10,
+  })
 
   return (
     <section className='p-4'>
-      <ContactsActionTabs />
-
-      {activeTab === 'table' && <ContactsMain />}
-
-      {activeTab === 'form' && <ContactForm />}
+      {isAddContactDialog && (
+        <AddContactDialog open={isAddContactDialog} onClose={() => setIsAddContactDialog(false)} />
+      )}
+      <div className='w-full flex gap-5'>
+        <Button onClick={() => setIsAddContactDialog(true)} variant='outline'>
+          Add New Contact
+        </Button>
+        <SearchInput searchQuery={searchQuery} onSearch={handleSearch} />
+        <StatusSelect selectedStatus={selectedStatus} onSelect={handleSelect} />
+        <DateOrderSelect selectedOrder={sortOrder} onSelect={handleDateSort} />
+        <Button className='font-normal' onClick={resetFilters} variant='outline'>
+          Reset filters
+        </Button>
+      </div>
+      <ContactsTable contacts={currentItems} />
+      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
     </section>
   )
 }

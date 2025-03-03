@@ -8,12 +8,10 @@ import FormInputField from './form-input-field'
 import FormSelectField from './form-select-field'
 
 import useContactStore from '@/store/contactStore'
-import useTabStore from '@/store/tabStore'
 import { INPUTS, LEAD_SOURCES, STATUS_SELECT } from '@/shared/constants'
 
 export default function ContatcForm() {
   const { addContact } = useContactStore()
-  const { setActiveTab } = useTabStore()
 
   const {
     control,
@@ -39,14 +37,12 @@ export default function ContatcForm() {
     const contact = { ...values, id: id, createdAt: date, updatedAt: date, notes: [initialNote] }
 
     addContact(contact)
-    setActiveTab('table')
-    console.log(contact)
   }
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className='p-6 max-w-[400px] border rounded-md flex flex-col gap-2'
+      className='p-6 border rounded-md flex flex-col gap-2'
       autoComplete='off'
       noValidate
     >

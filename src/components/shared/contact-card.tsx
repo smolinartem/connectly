@@ -4,8 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 import { Button } from '../ui/button'
 import { Pencil } from 'lucide-react'
 import DeleteAlertDialog from './delete-alert-dialog'
-import EditContactDialog from './edit-contact-dialog'
 import { SOURCES_NAMES } from '@/shared/constants'
+import EditContactDialog from '../dialogs/edit-contact-dialog'
 
 interface Props {
   contact: ContactType
