@@ -1,50 +1,63 @@
-# React + TypeScript + Vite
+# Connectly v1.0
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Содержание
 
-Currently, two official plugins are available:
+- [О проекте](#о-проекте)
+- [Установка и запуск](#установка-и-запуск)
+- [Технологический стек](#технологический-стек)
+- [Возможности](#возможности)
+- [Ссылка на проект](#Ссылка-на-проект)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## О проекте
 
-## Expanding the ESLint configuration
+Этот проект представляет собой CRM систему для работы с контактами клиентов, разработанное с использованием React и развернутое на Vercel.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+![screenshot](./src/screen-connectly.png)
 
-- Configure the top-level `parserOptions` property like this:
+## Установка и запуск
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. **Клонирование репозитория**:
+
+```sh
+git clone https://github.com/smolinartem/connectly
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. **Установка зависимостей:**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```sh
+cd connectly
+npm install
 ```
+
+3. **Запуск приложения:**
+
+```sh
+npm run dev
+```
+
+## Технологический стек:
+
+- React
+- Typescript
+- React Router
+- React Hook Forms
+- Zod
+- Zustand
+- Tailwind CSS
+- Shadcn
+
+## Возможности:
+
+- добавление, редактирование и удаление контактов
+- отображение всех контактов в виде таблицы
+- поиск контактов по имени или адресу электронной почты
+- фильтрация контактов по статусу
+- сортировка контактов по дате
+- пагинация по таблице контактов
+- просмотр сведений о контакте на новой странице
+- добавление заметок для каждого контакта
+- просмотр статистики на панели управления
+
+## Ссылка на проект:
+
+- [Проект на Vercel](https://connectly-krutopognali.vercel.app/)

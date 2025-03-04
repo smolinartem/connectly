@@ -12,7 +12,7 @@ interface Props {
   contact: ContactType
 }
 
-function ContactCard({ contact }: Props) {
+export default function ContactCard({ contact }: Props) {
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false)
 
   return (
@@ -61,5 +61,3 @@ function ContactCard({ contact }: Props) {
     </Card>
   )
 }
-
-export default ContactCard
