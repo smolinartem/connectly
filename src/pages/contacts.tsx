@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import usePagination from '@/hooks/usePagination'
 import useFilteredContacts from '@/hooks/useFilteredContacts'
 import useContactStore from '@/store/contactStore'
@@ -13,7 +13,12 @@ import { Button } from '@/components/ui/button'
 
 export default function Contacts() {
   const [isAddContactDialog, setIsAddContactDialog] = useState(false)
-  const { contacts } = useContactStore()
+
+  const { contacts, updateContacts } = useContactStore()
+
+  useEffect(() => {
+    updateContacts()
+  }, [updateContacts])
 
   const {
     filteredContacts,
@@ -48,7 +53,13 @@ export default function Contacts() {
         </Button>
       </div>
       <ContactsTable contacts={currentItems} />
-      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
+      {contacts.length > 0 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      )}
     </section>
   )
 }

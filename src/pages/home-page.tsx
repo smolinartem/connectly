@@ -8,6 +8,10 @@ export default function HomePage() {
   const handleAddContacts = () => {
     saveContactsToLocalStorage(contacts)
   }
+  const handleDeleteContacts = () => {
+    saveContactsToLocalStorage([])
+  }
+
   return (
     <section className='p-4'>
       <div className='grid grid-cols-2 gap-4'>
@@ -59,9 +63,22 @@ export default function HomePage() {
             <div className=' mb-5'>
               <img src={ContactImage} />
             </div>
-            <Button onClick={() => handleAddContacts()} variant='outline'>
-              Add Contacts
-            </Button>
+            <div className='flex gap-2'>
+              <Button
+                className='active:font-bold active:border-stone-900'
+                onClick={() => handleAddContacts()}
+                variant='outline'
+              >
+                Add Contacts
+              </Button>
+              <Button
+                className='active:font-bold active:border-stone-900'
+                onClick={() => handleDeleteContacts()}
+                variant='outline'
+              >
+                Delete All Contacts
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </div>

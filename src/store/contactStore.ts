@@ -4,13 +4,14 @@ import { create } from 'zustand'
 
 interface ContactStore {
   contacts: ContactType[]
+  updateContacts: () => void
   addContact: (contact: ContactType) => void
   updateContact: (id: string, updatedContact: Partial<ContactType>) => void
   deleteContact: (id: string) => void
 }
 
 // Функция для получения контактов из localStorage
-const getInitialContacts = (): ContactType[] => {
+export const getInitialContacts = (): ContactType[] => {
   const storedContacts = localStorage.getItem('contacts')
   return storedContacts ? JSON.parse(storedContacts) : []
 }
@@ -22,6 +23,7 @@ export const saveContactsToLocalStorage = (contacts: ContactType[]) => {
 
 const useContactStore = create<ContactStore>((set) => ({
   contacts: getInitialContacts(),
+  updateContacts: () => set({ contacts: getInitialContacts() }),
 
   // Добавление контакта
   addContact: (contact) =>

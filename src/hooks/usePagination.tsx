@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface UsePaginationProps<T> {
   items: T[]
@@ -22,6 +22,13 @@ function usePagination<T>({ items, itemsPerPage }: UsePaginationProps<T>): UsePa
 
   // Вычисляем общее количество страниц
   const totalPages = Math.ceil(items.length / itemsPerPage)
+
+  // Если текущая страница больше общего количества страниц, сбрасываем на первую
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(1)
+    }
+  }, [currentPage, totalPages])
 
   return {
     currentItems,
