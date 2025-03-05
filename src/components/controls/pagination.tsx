@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { memo } from 'react'
 
 interface Props {
   currentPage: number
@@ -7,7 +8,7 @@ interface Props {
   onPageChange: (page: number) => void
 }
 
-function Pagination({ currentPage, totalPages, onPageChange }: Props) {
+export default memo(function Pagination({ currentPage, totalPages, onPageChange }: Props) {
   console.log('pagination')
 
   return (
@@ -43,6 +44,4 @@ function Pagination({ currentPage, totalPages, onPageChange }: Props) {
       </button>
     </div>
   )
-}
-
-export default Pagination
+})

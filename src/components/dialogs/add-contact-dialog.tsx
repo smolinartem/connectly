@@ -13,7 +13,7 @@ export default function AddContactDialog({ open, onClose }: Props) {
       open={open}
       onClose={onClose}
     >
-      <AddContactForm />
+      <AddContactForm onClose={onClose} />
     </DialogWrapper>
   )
 }

@@ -10,7 +10,11 @@ import { Button } from '@/components/ui/button'
 import FormInputField from './form-input-field'
 import FormSelectField from './form-select-field'
 
-export default function AddContactForm() {
+interface Props {
+  onClose: () => void
+}
+
+export default function AddContactForm({ onClose }: Props) {
   const { addContact } = useContactStore()
 
   const {
@@ -37,6 +41,7 @@ export default function AddContactForm() {
     const contact = { ...values, id: id, createdAt: date, updatedAt: date, notes: [initialNote] }
 
     addContact(contact)
+    onClose()
   }
 
   return (
