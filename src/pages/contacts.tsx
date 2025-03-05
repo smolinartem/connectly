@@ -5,7 +5,6 @@ import useContactStore from '@/store/contactStore'
 import Controls from '@/components/controls/controls'
 import ContactsTable from '@/components/contacts/contacts-table'
 import Pagination from '@/components/controls/pagination'
-
 import AddNewContactButton from '@/components/contacts/add-new-contact-button'
 
 export default function Contacts() {

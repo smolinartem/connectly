@@ -36,7 +36,6 @@ export default function EditContactForm({ contact, onClose }: Props) {
   const onSubmit = (values: ContactFormValues) => {
     const updatedAt = new Date().toLocaleDateString()
     updateContact(contact.id, { ...values, updatedAt: updatedAt })
-    console.log(contact)
     onClose()
   }
 
