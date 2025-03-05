@@ -16,6 +16,8 @@ interface Props {
 }
 
 function ContactsTable({ contacts }: Props) {
+  console.log('table')
+
   const navigate = useNavigate()
 
   const handleRowClick = (id: string) => {

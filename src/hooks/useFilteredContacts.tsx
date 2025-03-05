@@ -1,34 +1,19 @@
-import { useState } from 'react'
 import { ContactType } from '@/types/index.types'
 import { parse } from 'date-fns'
+import useControlStore from '@/store/controlStore'
 
 interface UseFilteredContactsProps {
   contacts: ContactType[]
 }
 
-interface UseFilteredContactsReturn {
-  searchQuery: string
-  handleSearch: (query: string) => void
-  selectedStatus: string
-  handleSelect: (status: string) => void
-  filteredContacts: ContactType[]
-  sortOrder: SortType
-  handleDateSort: (order: SortType) => void
-  resetFilters: () => void
-}
-
-export type SortType = 'asc' | 'desc'
-
-function useFilteredContacts({ contacts }: UseFilteredContactsProps): UseFilteredContactsReturn {
-  const [searchQuery, setSearchQuery] = useState<string>('')
-  const [selectedStatus, setSelectedStatus] = useState<string>('all')
-  const [sortOrder, setSortOrder] = useState<SortType>('desc')
+function useFilteredContacts({ contacts }: UseFilteredContactsProps): ContactType[] {
+  const { searchQuery, selectedStatus, selectedOrder } = useControlStore()
 
   const parseDate = (dateStr: string): Date => {
     return parse(dateStr, 'dd.MM.yyyy', new Date())
   }
 
-  const filteredContacts = contacts
+  return contacts
     .filter((contact) => {
       const query = searchQuery.toLowerCase()
       const matchesSearch =
@@ -43,37 +28,8 @@ function useFilteredContacts({ contacts }: UseFilteredContactsProps): UseFiltere
     .sort((a, b) => {
       const dateA = parseDate(a.createdAt).getTime()
       const dateB = parseDate(b.createdAt).getTime()
-      return sortOrder === 'asc' ? dateA - dateB : dateB - dateA
+      return selectedOrder === 'asc' ? dateA - dateB : dateB - dateA
     })
-
-  const handleSearch = (value: string) => {
-    setSearchQuery(value)
-  }
-
-  const handleSelect = (value: string) => {
-    setSelectedStatus(value)
-  }
-
-  const handleDateSort = (value: SortType) => {
-    setSortOrder(value)
-  }
-
-  const resetFilters = () => {
-    setSearchQuery('')
-    setSelectedStatus('all')
-    setSortOrder('desc')
-  }
-
-  return {
-    searchQuery,
-    handleSearch,
-    selectedStatus,
-    handleSelect,
-    filteredContacts,
-    sortOrder,
-    handleDateSort,
-    resetFilters,
-  }
 }
 
 export default useFilteredContacts

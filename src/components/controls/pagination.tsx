@@ -8,6 +8,8 @@ interface Props {
 }
 
 function Pagination({ currentPage, totalPages, onPageChange }: Props) {
+  console.log('pagination')
+
   return (
     <div className='flex items-center gap-3 mt-4'>
       <button

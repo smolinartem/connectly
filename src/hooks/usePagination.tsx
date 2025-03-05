@@ -1,3 +1,4 @@
+import useControlStore from '@/store/controlStore'
 import { useEffect, useState } from 'react'
 
 interface UsePaginationProps<T> {
@@ -14,6 +15,12 @@ interface UsePaginationReturn<T> {
 
 function usePagination<T>({ items, itemsPerPage }: UsePaginationProps<T>): UsePaginationReturn<T> {
   const [currentPage, setCurrentPage] = useState(1)
+  const { selectedStatus } = useControlStore()
+
+  // Если статус изменяется, сбрасываем текущую страницу до первой
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [selectedStatus])
 
   // Вычисляем индексы для текущей страницы
   const indexOfLastItem = currentPage * itemsPerPage

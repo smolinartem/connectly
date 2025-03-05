@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import {
   Select,
   SelectContent,
@@ -6,11 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-
-interface Props {
-  selectedStatus: string
-  onSelect: (value: string) => void
-}
+import useControlStore from '@/store/controlStore'
 
 const STATUS_ITEMS = [
   {
@@ -31,9 +28,14 @@ const STATUS_ITEMS = [
   },
 ]
 
-export default function StatusSelect({ selectedStatus, onSelect }: Props) {
+export default memo(function StatusSelect() {
+  console.log('status select')
+
+  const selectedStatus = useControlStore((state) => state.selectedStatus)
+  const setSelectedStatus = useControlStore((state) => state.setSelectedStatus)
+
   return (
-    <Select onValueChange={(value) => onSelect(value)} value={selectedStatus}>
+    <Select onValueChange={(value) => setSelectedStatus(value)} value={selectedStatus}>
       <SelectTrigger className='w-[180px]'>
         <SelectValue placeholder='Status select' />
       </SelectTrigger>
@@ -48,4 +50,4 @@ export default function StatusSelect({ selectedStatus, onSelect }: Props) {
       </SelectContent>
     </Select>
   )
-}
+})

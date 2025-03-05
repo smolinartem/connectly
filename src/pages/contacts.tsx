@@ -10,6 +10,7 @@ import DateOrderSelect from '@/components/controls/date-order-select'
 import ContactsTable from '@/components/contacts/contacts-table'
 import Pagination from '@/components/controls/pagination'
 import { Button } from '@/components/ui/button'
+import ResetFiltersButton from '@/components/controls/reset-filters-button'
 
 export default function Contacts() {
   const [isAddContactDialog, setIsAddContactDialog] = useState(false)
@@ -20,16 +21,7 @@ export default function Contacts() {
     updateContacts()
   }, [updateContacts])
 
-  const {
-    filteredContacts,
-    searchQuery,
-    selectedStatus,
-    sortOrder,
-    handleSearch,
-    handleSelect,
-    handleDateSort,
-    resetFilters,
-  } = useFilteredContacts({ contacts })
+  const filteredContacts = useFilteredContacts({ contacts })
 
   const { currentItems, currentPage, totalPages, setCurrentPage } = usePagination({
     items: filteredContacts,
@@ -45,15 +37,13 @@ export default function Contacts() {
         <Button onClick={() => setIsAddContactDialog(true)} variant='outline'>
           Add New Contact
         </Button>
-        <SearchInput searchQuery={searchQuery} onSearch={handleSearch} />
-        <StatusSelect selectedStatus={selectedStatus} onSelect={handleSelect} />
-        <DateOrderSelect selectedOrder={sortOrder} onSelect={handleDateSort} />
-        <Button className='font-normal' onClick={resetFilters} variant='outline'>
-          Reset filters
-        </Button>
+        <SearchInput />
+        <StatusSelect />
+        <DateOrderSelect />
+        <ResetFiltersButton />
       </div>
       <ContactsTable contacts={currentItems} />
-      {contacts.length > 0 && (
+      {filteredContacts.length > 0 && (
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
